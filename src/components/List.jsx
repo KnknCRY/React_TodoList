@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Item from "./item";
+import Switch from "./switch";
+import "./css/list.css";
 
 class List extends Component {
   state = {
@@ -100,12 +102,12 @@ class List extends Component {
         ))}
 
         <span className="moveEnd">
-          Move done Items at the end?
-          <input
-            type="checkbox"
-            onChange={this.handleMoveEnd}
-            checked={this.state.moveEnd}
-          ></input>
+          <span className="moveEnd-text">Move done Items at the end?</span>
+          <Switch
+            isOn={this.state.moveEnd}
+            handleToggle={this.handleMoveEnd}
+            onColor="#e66060"
+          />
         </span>
 
         <form className="addItem" onSubmit={this.addItem}>

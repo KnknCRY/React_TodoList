@@ -10,23 +10,6 @@ div.main {
   margin: -300px 0 0 -200px;
 }
 
-div.item {
-  width: 300px;
-  height: 20px;
-  border: 2px #f37f7f solid;
-  background-color: #f79a9a;
-  padding: 10px;
-}
-
-span.item-text {
-  float: left;
-  color: white;
-}
-
-span.item-button {
-  float: right;
-}
-
 span.head {
   background-color: #f37f7f;
   line-height: 3px;
@@ -37,6 +20,10 @@ span.moveEnd {
   position: relative;
   left: 140px;
   top: 5px;
+}
+span.moveEnd-text {
+  position: relative;
+  right: 20px;
 }
 
 form.addItem {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./app.css";
+import "./css/item.css";
 
 class Item extends Component {
   handleDelete = () => {
@@ -16,12 +16,14 @@ class Item extends Component {
     return (
       <div className="item">
         <span className="item-text">{text}</span>
-        <span className="item-button">
+        <span className="item-react">
           <input
             type="checkbox"
+            className="item-checkbox"
             onChange={() => this.props.onCheck(this.props.item)}
             checked={this.props.item.checked}
           ></input>
+
           <button onClick={() => this.props.onDelete(this.props.item.id)}>
             Delete
           </button>

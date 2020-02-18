@@ -1,0 +1,60 @@
+div.item {
+  width: 300px;
+  height: 20px;
+  border: 2px #f37f7f solid;
+  background-color: #f79a9a;
+  padding: 10px;
+}
+
+span.item-text {
+  width: 200px;
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow: hidden;
+  float: left;
+  color: white;
+}
+
+span.item-react {
+  float: right;
+}
+
+span.item-check {
+  cursor: pointer;
+}
+span.item-delete {
+  cursor: pointer;
+}
+
+input.item-checkbox {
+  position: relative;
+  bottom: 2px;
+}
+
+input.item-checkbox[type="checkbox"] {
+  margin-right: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  width: 15px;
+  height: 12px;
+  position: relative;
+}
+
+input.item-checkbox[type="checkbox"]:after {
+  position: absolute;
+  width: 10px;
+  height: 15px;
+  top: 0px;
+  content: " ";
+  background-color: white;
+  color: #f37f7f;
+  display: inline-block;
+  visibility: visible;
+  padding: 0px 3px;
+  border-radius: 3px;
+}
+
+input.item-checkbox[type="checkbox"]:checked:after {
+  content: "✓";
+  font-size: 12px;
+}
