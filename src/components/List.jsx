@@ -9,7 +9,8 @@ class List extends Component {
       { id: 3, text: "Learn somthing else", checked: false },
       { id: 4, text: "123123", checked: false }
     ],
-    inputItem: ""
+    inputItem: "",
+    moveEnd: false
   };
 
   handleCheck = item => {
@@ -25,28 +26,70 @@ class List extends Component {
     this.setState({ items });
   };
 
-  addItem = event => {
-    var max_id = this.state.items[0].id;
-
-    //這裡的i是index
-    for (let i in this.state.items) {
-      if (max_id < this.state.items[i].id) max_id = this.state.items[i].id;
+  handleMoveEnd = () => {
+    this.setState({ moveEnd: !this.state.moveEnd });
+    if (!this.state.moveEnd) {
+      this.sortByCheck();
+    } else {
+      this.sortByID();
     }
+  };
+
+  sortByCheck = () => {
+    const checked = this.state.items.filter(item => item.checked === true);
+    const unchecked = this.state.items.filter(item => item.checked === false);
+    const items = [...unchecked, ...checked];
+    this.setState({ items });
+  };
+
+  sortByID = () => {
+    const items = this.state.items.sort((a, b) => {
+      return a.id > b.id ? 1 : -1;
+    });
+    this.setState({ items });
+  };
+
+  addItem = event => {
+    let max_id = this.state.items[0].id;
+    let min_id = this.state.items[0].id;
+
+    this.state.items.forEach(item => {
+      if (max_id < item.id) max_id = item.id;
+      if (min_id > item.id) min_id = item.id;
+    });
 
     let items = [...this.state.items];
-    items.push({ id: max_id + 1, text: this.state.inputItem, checked: false });
+    items.push({
+      id: max_id + 1,
+      text: this.state.inputItem,
+      checked: false
+    });
+
     this.setState({ items });
     event.preventDefault();
   };
 
-  onChangeInput = event => {
+  handleInput = event => {
     this.setState({ inputItem: event.target.value });
   };
 
   render() {
     return (
-      <div>
-        <h3>Todo List</h3>
+      <div className="main">
+        <span className="head">
+          <p style={{ "font-size": "20px" }}>Todo List</p>
+          <p style={{ "font-size": "5px" }}>
+            Get things done, one item add a time
+          </p>
+          <hr
+            style={{
+              border: "0",
+              "background-color": "#FF9696",
+              height: "1px"
+            }}
+          />
+        </span>
+
         {this.state.items.map(item => (
           <Item
             key={item.id}
@@ -55,13 +98,26 @@ class List extends Component {
             onDelete={this.handleDelete}
           />
         ))}
-        <br />
-        <form onSubmit={this.addItem}>
-          <label>
+
+        <span className="moveEnd">
+          Move done Items at the end?
+          <input
+            type="checkbox"
+            onChange={this.handleMoveEnd}
+            checked={this.state.moveEnd}
+          ></input>
+        </span>
+
+        <form className="addItem" onSubmit={this.addItem}>
+          <label className="addItem-text">
             Add to todo list <br />
-            <input type="text" onChange={this.onChangeInput} />
+            <input
+              style={{ width: "200px", height: "30px" }}
+              type="text"
+              onChange={this.handleInput}
+            />
           </label>
-          <button>Add item</button>
+          <button className="addItem-button">ADD ITEM</button>
         </form>
       </div>
     );
