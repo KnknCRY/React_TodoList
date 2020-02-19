@@ -20,6 +20,11 @@ class List extends Component {
     const index = items.indexOf(item);
     items[index] = { ...item };
     items[index].checked = !items[index].checked;
+    if (this.state.moveEnd) {
+      this.sortByID();
+    } else {
+      this.sortByCheck();
+    }
     this.setState({ items });
   };
 
@@ -67,7 +72,7 @@ class List extends Component {
       checked: false
     });
 
-    this.setState({ items });
+    this.setState({ items, inputItem: "" });
     event.preventDefault();
   };
 
@@ -116,6 +121,7 @@ class List extends Component {
             <input
               style={{ width: "200px", height: "30px" }}
               type="text"
+              value={this.state.inputItem}
               onChange={this.handleInput}
             />
           </label>
