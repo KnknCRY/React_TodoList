@@ -6,7 +6,7 @@
 
 1. 下載此 github 專案到本地的資料夾
 2. 終端機進入資料夾
-3. 終端機執行`npm install` 下載
+3. 終端機執行`npm install` 下載相關 package
 4. 終端機執行`npm start`
    ![](https://i.imgur.com/SX6Cgvc.png)
 
