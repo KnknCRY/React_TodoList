@@ -3,6 +3,7 @@
 ### 執行方式
 
 [https://github.com/KnknCRY/React_TodoList](https://)
+程式進入點為 index.js
 
 1. 下載此 github 專案到本地的資料夾
 2. 終端機進入資料夾
